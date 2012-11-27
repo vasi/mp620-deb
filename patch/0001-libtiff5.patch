@@ -1,0 +1,25 @@
+From 70430ec2f972709cd5679a34945fb43c33030bfa Mon Sep 17 00:00:00 2001
+From: Dave Vasilevsky <dave@vasilevsky.ca>
+Date: Mon, 26 Nov 2012 20:22:09 -0500
+Subject: [PATCH 1/4] Depend on newer libtiff
+
+---
+ debian/control |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/debian/control b/debian/control
+index 23eaaec..22c4c7c 100755
+--- a/debian/control
++++ b/debian/control
+@@ -2,7 +2,7 @@ Source: cnijfilter-common
+ Section: graphics
+ Priority: optional
+ Maintainer: Canon Inc. <sup-debian@list.canon.co.jp>
+-Build-Depends: debhelper (>= 4.0.0), libcupsys2-dev, libxml2-dev, libtiff4-dev
++Build-Depends: debhelper (>= 4.0.0), libcupsys2-dev, libxml2-dev, libtiff5-dev
+ Standards-Version: 3.7.2
+ 
+ Package: cnijfilter-common
+-- 
+1.7.10.4
+

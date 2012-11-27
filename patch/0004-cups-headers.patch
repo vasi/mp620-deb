@@ -1,0 +1,40 @@
+From ec42a1cc5313ae9d1603156687f8ff65c826d81c Mon Sep 17 00:00:00 2001
+From: Dave Vasilevsky <dave@vasilevsky.ca>
+Date: Mon, 26 Nov 2012 20:52:00 -0500
+Subject: [PATCH 4/4] CUPS header fixes
+
+---
+ backend/src/cnij_backend_common.c |    1 +
+ cngpijmon/src/bjcupsmon_cups.c    |    2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/backend/src/cnij_backend_common.c b/backend/src/cnij_backend_common.c
+index 853c3f7..8cc1729 100755
+--- a/backend/src/cnij_backend_common.c
++++ b/backend/src/cnij_backend_common.c
+@@ -39,6 +39,7 @@
+ // CUPS Header
+ #include <cups/cups.h>
+ #include <cups/ipp.h>
++#include <cups/ppd.h>
+ 
+ // Header file for CANON
+ #include "cnij_backend_common.h"
+diff --git a/cngpijmon/src/bjcupsmon_cups.c b/cngpijmon/src/bjcupsmon_cups.c
+index 7e242c6..bf004aa 100755
+--- a/cngpijmon/src/bjcupsmon_cups.c
++++ b/cngpijmon/src/bjcupsmon_cups.c
+@@ -19,8 +19,10 @@
+  */
+ 
+ /*** Includes ***/
++#define _IPP_PRIVATE_STRUCTURES
+ #include <cups/cups.h>
+ #include <cups/language.h>
++#include <cups/ppd.h>
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <pwd.h>
+-- 
+1.7.10.4
+

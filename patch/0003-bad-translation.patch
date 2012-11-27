@@ -1,0 +1,25 @@
+From ce7baef6531968366261a5e2534490fc72ddb156 Mon Sep 17 00:00:00 2001
+From: Dave Vasilevsky <dave@vasilevsky.ca>
+Date: Mon, 26 Nov 2012 20:38:55 -0500
+Subject: [PATCH 3/4] Indonesian translation is broken
+
+---
+ printui/configure.in |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/printui/configure.in b/printui/configure.in
+index 972660e..76f50c9 100755
+--- a/printui/configure.in
++++ b/printui/configure.in
+@@ -46,7 +46,7 @@ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
+ 
+ dnl Add the languages which your application supports here.
+-ALL_LINGUAS="cs da de el es fi fr hu it ja ko nl nb pl pt ru sv th tr zh zh_TW id"
++ALL_LINGUAS="cs da de el es fi fr hu it ja ko nl nb pl pt ru sv th tr zh zh_TW"
+ AM_GLIB_GNU_GETTEXT
+ 
+ dnl Set PACKAGE_LOCALE_DIR in config.h.
+-- 
+1.7.10.4
+

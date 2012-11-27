@@ -1,0 +1,20 @@
+mp620-deb: Canon PIXMA MP 620 network printer support on Linux
+
+Run ./install.sh to build and install the driver. It will take about ten minutes.
+
+* The driver should work for the MP 620 or MP 630 printer.
+
+* Supported distros: Ubuntu Quantal amd64
+	- Other recent Ubuntu releases should work
+	- Ubuntu-based distros, like Mint, should work
+	- Debian support should be pretty easy to add
+	- i386 support should be easy as well
+
+* Proprietary sources and binaries are fetched and patched to build the driver. The driver license allows "modification for personal use", so patching should be ok. If you have moral objections to proprietary software, you should probably get another printer.
+
+* The driver is installed as .deb packages. No random crap spewed all over the filesystem!
+
+* About 110 MB of data must be downloaded to create the build environment. You can delete it all afterwards.
+
+
+(C) 2012 Dave Vasilevsky
