@@ -4,7 +4,7 @@ Run ./install.sh to build and install the driver. It will take about ten minutes
 
 * The driver should work for the MP 620 or MP 630 printer.
 
-* Supported distros: Ubuntu Quantal amd64
+* Supported distros: Ubuntu Precise/Quantal amd64
 	- Other recent Ubuntu releases should work
 	- Ubuntu-based distros, like Mint, should work
 	- Debian support should be pretty easy to add

@@ -20,9 +20,15 @@ rm_mounts() {
 trap 'header "Failed!!!"; exit 1' ERR
 
 
-# Get the source
 ij_version=3.00
 ij_name="cnijfilter-common-$ij_version"
+if apt-cache search -n libtiff5 | grep -q .; then
+	tiff=libtiff5
+else
+	tiff=libtiff4
+fi
+
+# Get the source
 if [ "$1" != "ROOT" ]; then
 	# Available here: http://support-au.canon.com.au/contents/AU/EN/0100160604.html
 	ij_src="$ij_name-1.tar.gz"
@@ -40,6 +46,7 @@ if [ "$1" != "ROOT" ]; then
 			echo Applying $(basename $patch)
 			patch -d $ij_name -p1 < $patch
 		done
+		sed -i -e "s/libtiff4/$tiff/g" $ij_name/debian/control
 	fi
 fi
 
@@ -53,7 +60,7 @@ fi
 
 # Create a chroot
 if ! ls *.deb >& /dev/null; then
-	if [ ! -d "chroot" ]; then
+	if [ ! -d "chroot/usr" ]; then
 		if ! which debootstrap >&/dev/null; then
 			header "Installing debootstrap"
 			apt-get -y install debootstrap
@@ -86,7 +93,7 @@ EOF
 
 
 	header "Installing build dependencies"
-	ij_bdeps="build-essential debhelper automake libtool libcups2-dev libpopt-dev libtiff5-dev libpng12-dev libgtk2.0-dev libxml2-dev"
+	ij_bdeps="build-essential debhelper automake libtool libcups2-dev libpopt-dev $tiff-dev libpng12-dev libgtk2.0-dev libxml2-dev"
 	chroot chroot apt-get -y install $ij_bdeps
 
 	header "Building driver package"
@@ -120,11 +127,11 @@ if ! check_pkg cups-bjnp; then
 	apt-get install -y cups-bjnp
 fi
 
-
+trap - ERR
 header "Success!"
 
 echo "You may now setup your printer. The printer may take a minute to show up in the Add Printer dialog."
-if which system-config-printer >&/dev/null; then
+if [ -n "$DISPLAY" ] && which system-config-printer >&/dev/null; then
 	system-config-printer
 fi
 
