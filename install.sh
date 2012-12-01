@@ -105,12 +105,12 @@ EOF
 fi
 
 check_pkg() {
-	dpkg-query -Wf '${db:Status-Abbrev}' $1 2>/dev/null | grep -q ii
+	dpkg -l $1 2>/dev/null | grep -q ^ii
 }
 
 # Install packages
 header "Installing driver package"
-pkg=cnijfilter-mp630series
+pkg=cnijfilter-mp630series:i386
 if ! check_pkg $pkg; then
 	if ! ls *.deb >& /dev/null; then
 		echo "No packages were built!"; false
